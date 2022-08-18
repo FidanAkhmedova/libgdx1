@@ -14,12 +14,11 @@ public class MyGdxGame extends ApplicationAdapter {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		img = new Texture("globe.jpg");
+		img = new Texture("globe.jpg");//task
 	}
 
 	@Override
 	public void render () {
-
 		ScreenUtils.clear(1, 0, 0, 1);
 		float x = (Gdx.graphics.getWidth() - img.getWidth())/2 ;
 		if(Gdx.input.isButtonPressed(Input.Buttons.LEFT)) clk++;
