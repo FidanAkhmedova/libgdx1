@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 
-//task1
+//task1 Загрузить новую картинку формата jpeg или png в папку assets и загрузить её в экземпляр img класса Texture. Добавить управление выводом текстуры так, чтобы указатель мыши был в её середины. Вывести в заголовок окна количество кликов левой кнопки мыши.
 public class MyGdxGame extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
