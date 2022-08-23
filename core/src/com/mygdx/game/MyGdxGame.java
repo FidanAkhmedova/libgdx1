@@ -4,37 +4,54 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.ScreenUtils;
 
-//task1
 public class MyGdxGame extends ApplicationAdapter {
 	SpriteBatch batch;
-	Texture img;
-	int clk;
+	Anim animation;
+	private float speed = 200.0f;
+
+
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		img = new Texture("globe.jpg");
+		animation = new Anim("favpng_sprite-animation-2d-computer-graphics-video-game.png",5, 2,Animation.PlayMode.LOOP  );
 	}
+
 
 	@Override
 	public void render () {
+		ScreenUtils.clear(1, 1, 1, 1);
+		animation.setTime(Gdx.graphics.getDeltaTime());
 
-		ScreenUtils.clear(1, 0, 0, 1);
-		float x = (Gdx.graphics.getWidth() - img.getWidth())/2 ;
-		//float y = Gdx.graphics.getHeight()-Gdx.input.getY()- img.getHeight()/2;
-		if(Gdx.input.isButtonPressed(Input.Buttons.LEFT)) clk++;
-		Gdx.graphics.setTitle("Clicked" +clk+ "times");
+		float x = 0;
+		float t = 0;
+		float t1 = 0;
+		float t2 = 0;
+		t = animation.getTime();
+
+		if (!animation.getFrame().isFlipX()){
+			x = t*this.speed;
+			if (x >= Gdx.graphics.getWidth()-animation.getFrame().getRegionWidth())
+				animation.getFrame().flip(true, false);
+		}
+
+		if (animation.getFrame().isFlipX()){
+			x -= t*this.speed;
+		}
+
 		batch.begin();
-		batch.draw(img, x, 0);
-		//batch.draw(img, x, y);
+		batch.draw(animation.getFrame(), x, 0);
 		batch.end();
 	}
+
 	
 	@Override
 	public void dispose () {
 		batch.dispose();
-		img.dispose();
+		animation.dispose();
 	}
 }
