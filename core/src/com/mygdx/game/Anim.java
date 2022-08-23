@@ -9,7 +9,6 @@ public class Anim {
     private Texture img;
     private Animation<TextureRegion> anm;
     private  float time;
-//    private float speed = 50.0f;
     public Anim(String name, int col, int row, Animation.PlayMode playmode){
         img = new Texture(name);
         TextureRegion region0 = new TextureRegion(img);
